@@ -1,0 +1,14 @@
+# Ignore local SSH private keys
+*key
+*.pem
+
+# Ignore Terraform execution state and sensitive vars
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+.terraform.lock.hcl
+
+# Ignore OS specific files
+.DS_Store
+Thumbs.db
