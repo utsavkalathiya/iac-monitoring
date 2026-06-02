@@ -1,6 +1,7 @@
 # Ignore local SSH private keys
 *key
 *.pem
+*.pub
 
 # Ignore Terraform execution state and sensitive vars
 .terraform/
