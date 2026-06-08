@@ -44,3 +44,23 @@
         name: docker
         state: started
         enabled: yes
+
+    - name: Create monitoring directory on remote server
+      file:
+        path: /home/ubuntu/monitoring
+        state: directory
+        mode: "0755"
+
+    - name: Copy deployment files to remote server
+      copy:
+        src: ../deployment/{{ item }}
+        dest: /home/ubuntu/monitoring/{{ item }}
+        mode: "0644"
+      loop:
+        - docker-compose.yml
+        - prometheus.yml
+
+    - name: Start Monitoring Stack via Docker Compose
+      shell:
+        cmd: docker compose up -d
+        chdir: /home/ubuntu/monitoring
